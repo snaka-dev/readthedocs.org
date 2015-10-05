@@ -23,9 +23,9 @@ function PaymentView (config) {
     self.cc_number = ko.observable(null);
     self.cc_expiry = ko.observable(null);
     self.cc_cvv = ko.observable(null);
-    self.cc_error_number = ko.observable(null);
-    self.cc_error_expiry = ko.observable(null);
-    self.cc_error_cvv = ko.observable(null);
+    self.error_cc_number = ko.observable(null);
+    self.error_cc_expiry = ko.observable(null);
+    self.error_cc_cvv = ko.observable(null);
 
     // Credit card validation
     self.initialize_form();
@@ -45,21 +45,20 @@ function PaymentView (config) {
             };
 
         self.error(null);
-        self.cc_error_number(null);
-        self.cc_error_expiry(null);
-        self.cc_error_cvv(null);
+        self.error_cc_number(null);
+        self.error_cc_expiry(null);
+        self.error_cc_cvv(null);
 
         if (!$.payment.validateCardNumber(card.number)) {
-            self.cc_error_number('Invalid card number');
-            console.log(card);
+            self.error_cc_number('Invalid card number');
             return false;
         }
         if (!$.payment.validateCardExpiry(card.exp_month, card.exp_year)) {
-            self.cc_error_expiry('Invalid expiration date');
+            self.error_cc_expiry('Invalid expiration date');
             return false;
         }
         if (!$.payment.validateCardCVC(card.cvc)) {
-            self.cc_error_cvv('Invalid security code');
+            self.error_cc_cvv('Invalid security code');
             return false;
         }
 
