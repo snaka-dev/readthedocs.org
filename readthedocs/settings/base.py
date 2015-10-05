@@ -209,6 +209,7 @@ INSTALLED_APPS = [
     'readthedocs.privacy',
     'readthedocs.gold',
     'readthedocs.donate',
+    'readthedocs.payments',
 
     # allauth
     'allauth',
